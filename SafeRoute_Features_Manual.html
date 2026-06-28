@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeRoute - Comprehensive Feature Manual</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background: #f4f4f4;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .document-container {
+            max-width: 210mm; /* A4 width */
+            margin: 40px auto;
+            background: #fff;
+            padding: 20mm;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: #111;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: 3px solid #00FFB2;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 5px;
+            margin-top: 40px;
+            color: #050A0F;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: #2ED573;
+            margin-top: 25px;
+        }
+
+        .feature-box {
+            background: #f8fbfa;
+            border-left: 4px solid #00FFB2;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .idea-box {
+            background: #fffbf0;
+            border-left: 4px solid #FFA502;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background: #fff;
+            }
+            .document-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="document-container">
+        <h1>SafeRoute<br><span style="font-size: 0.4em; color: #666; font-weight: normal;">Comprehensive Feature Manual & Expansion Guide</span></h1>
+        
+        <p>This document outlines every existing feature within the SafeRoute application as of the current build. It is designed to help you review current capabilities and brainstorm new features to add next.</p>
+
+        <p><em>Tip: You can press <strong>Ctrl + P</strong> (or Cmd + P) in your browser right now and select "Save as PDF" to keep a permanent copy of this manual!</em></p>
+
+        <!-- SECTION 1 -->
+        <h2>1. Intelligent Routing & Navigation</h2>
+        <div class="feature-box">
+            <h3>Current Implementation</h3>
+            <ul>
+                <li><strong>Safety-First Pathfinding:</strong> Unlike Google Maps which optimizes for time, SafeRoute generates three route options: <strong>SAFE</strong>, <strong>MODERATE</strong>, and <strong>DANGER</strong>.</li>
+                <li><strong>OSRM Integration:</strong> Connects to Open Source Routing Machine to draw actual turn-by-turn geometry.</li>
+                <li><strong>Dynamic Safety Tags:</strong> Routes are automatically tagged with metrics like "Well lit ✓", "CCTV ✓", "Isolated Area ✗", or "Active Crowd".</li>
+                <li><strong>Voice Navigation:</strong> An integrated UI overlay provides step-by-step turn guidance.</li>
+            </ul>
+        </div>
+        <div class="idea-box">
+            <h3>Ideas for New Features to Add:</h3>
+            <ul>
+                <li><strong>Live Apple/Google Maps Redirect:</strong> Allow users to export the "Safe" route directly to Google Maps or Apple Maps for native carplay/Android Auto navigation.</li>
+                <li><strong>Deviation Alerts:</strong> If the GPS detects the user has drifted more than 50 meters off the "SAFE" path, automatically trigger an Aria check-in or vibrate the phone.</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 2 -->
+        <h2>2. Guardian SOS System</h2>
+        <div class="feature-box">
+            <h3>Current Implementation</h3>
+            <ul>
+                <li><strong>Multi-Trigger Button:</strong> The SOS button responds differently based on how you interact with it:
+                    <ul>
+                        <li><em>Single Tap:</em> Starts a 3-second cancelable countdown.</li>
+                        <li><em>Double Tap:</em> Instant activation (no countdown).</li>
+                        <li><em>Long Hold (3s):</em> "Stealth Mode" activation (vibrates instead of flashing screen).</li>
+                    </ul>
+                </li>
+                <li><strong>SMS Broadcasting:</strong> Integrates with Twilio API to automatically send SMS messages to up to 5 emergency contacts with a live Google Maps link of the user's coordinates.</li>
+                <li><strong>Low Battery Alert:</strong> Automatically broadcasts the last known location to contacts if the phone battery drops below 5%.</li>
+            </ul>
+        </div>
+        <div class="idea-box">
+            <h3>Ideas for New Features to Add:</h3>
+            <ul>
+                <li><strong>Fake Phone Call Simulator:</strong> A button that triggers a realistic ringing phone screen and plays a pre-recorded voice on the other end to deter harassment.</li>
+                <li><strong>Hardware Trigger:</strong> Integrate with the phone's volume buttons (e.g., clicking volume-down 5 times rapidly triggers SOS even if the phone is locked).</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- SECTION 3 -->
+        <h2>3. ARIA (AI Co-Pilot)</h2>
+        <div class="feature-box">
+            <h3>Current Implementation</h3>
+            <ul>
+                <li><strong>Anthropic Claude Integration:</strong> A floating chat assistant capable of answering safety questions contextually.</li>
+                <li><strong>Whisper Mode:</strong> A toggle that mutes all app audio and uses haptic feedback (vibrations) so the user can communicate with the AI silently.</li>
+                <li><strong>Scheduled Check-ins:</strong> Users can say "Check on me in 30 minutes". If the user doesn't respond to the prompt 30 minutes later, the app automatically triggers the SOS protocol.</li>
+            </ul>
+        </div>
+        <div class="idea-box">
+            <h3>Ideas for New Features to Add:</h3>
+            <ul>
+                <li><strong>Voice Activation:</strong> Implement a wake word (e.g., "Hey Aria, I need help") using the Web Speech API to trigger features hands-free.</li>
+                <li><strong>Camera Scene Analysis:</strong> Allow users to snap a photo of a dark street and have Aria analyze it for potential hiding spots or safety risks using a Vision API.</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2>4. Community & Sentinel Network</h2>
+        <div class="feature-box">
+            <h3>Current Implementation</h3>
+            <ul>
+                <li><strong>Shadow Walk:</strong> A peer-to-peer tracking feature where a trusted contact can watch your live dot move on their map until you reach your destination.</li>
+                <li><strong>Incident Reporting:</strong> Users can drop pins for "Harassment", "Poor Lighting", or "Isolated Areas". These show up as heatmaps for other users.</li>
+                <li><strong>Safe Spots Directory:</strong> Dynamically highlights nearby 24/7 hospitals, police stations, and late-night shops based on live coordinates.</li>
+            </ul>
+        </div>
+        <div class="idea-box">
+            <h3>Ideas for New Features to Add:</h3>
+            <ul>
+                <li><strong>Verified Guardian Program:</strong> Allow volunteers (e.g., shop owners, security guards) to register as "Verified Guardians" on the map, providing safe havens.</li>
+                <li><strong>Crowd-Sourced Lighting Scores:</strong> Gamify the app by letting users rate the street lighting of their current block by tapping a thumb up/down, rewarding them with "Safety Points".</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2>5. Core App Engine & User Profile</h2>
+        <div class="feature-box">
+            <h3>Current Implementation</h3>
+            <ul>
+                <li><strong>Onboarding Flow:</strong> A secure PIN setup and emergency contact selection on first launch.</li>
+                <li><strong>Night Ops Mode:</strong> A specialized high-contrast dark theme optimized to prevent screen glare from blinding the user at night.</li>
+                <li><strong>App Disguise (Placeholder):</strong> Groundwork exists for a stealth UI.</li>
+            </ul>
+        </div>
+        <div class="idea-box">
+            <h3>Ideas for New Features to Add:</h3>
+            <ul>
+                <li><strong>Decoy PIN / App Disguise:</strong> If an attacker forces the user to open the app, entering a "Decoy PIN" opens a fake calculator or generic news app while secretly dispatching police/SOS.</li>
+                <li><strong>Offline Maps Mode:</strong> Download city data so routing and safe-spot finding works even if cellular data is jammed or out of range.</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

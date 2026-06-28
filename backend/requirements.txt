@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+geopy
+python-dotenv
+httpx
+pydantic
+requests
+anthropic
+sqlalchemy
+passlib[bcrypt]
+pyjwt
+twilio

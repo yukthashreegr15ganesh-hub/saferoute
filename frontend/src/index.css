@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Orbitron:wght@500;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-background text-textMain font-body antialiased selection:bg-primary selection:text-background;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card/70 backdrop-blur-xl border border-primary/10 shadow-xl;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .glass-panel:hover {
+    @apply border-primary/30;
+    box-shadow: 0 0 24px rgba(0, 255, 178, 0.12);
+  }
+  .ops-bg {
+    background-color: #050A0F;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 255, 178, 0.06) 0%, transparent 55%),
+      linear-gradient(rgba(0, 255, 178, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 178, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px, 32px 32px;
+  }
+  .night-ops {
+    @apply bg-night;
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% 20%, rgba(255, 71, 87, 0.08) 0%, transparent 50%),
+      linear-gradient(rgba(255, 71, 87, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 71, 87, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 28px 28px, 28px 28px;
+  }
+  .btn-glow {
+    @apply transition-all duration-200;
+  }
+  .btn-glow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 178, 0.4);
+  }
+  .btn-glow:active {
+    transform: scale(0.97);
+  }
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00FFB2, transparent);
+    animation: nav-travel 1.5s ease-in-out infinite;
+  }
+  @keyframes nav-travel {
+    0%, 100% { opacity: 0.4; transform: scaleX(0.6); }
+    50% { opacity: 1; transform: scaleX(1); }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(0,255,178,0.08) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  .heartbeat {
+    animation: heartbeat 1.2s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.08); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.05); }
+  }
+  .charge-bar {
+    background: linear-gradient(90deg, transparent, #00FFB2, transparent);
+    background-size: 200% 100%;
+    transition: background-position 0.4s;
+  }
+  .charge-btn:hover .charge-bar {
+    background-position: 100% 0;
+  }
+  .sonar-ring {
+    animation: sonar 2s ease-out infinite;
+  }
+  .page-enter {
+    animation: pageSlide 0.35s ease-out;
+  }
+  @keyframes pageSlide {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}
+
+.map-page { height: 100%; min-height: 0; }
+.map-root { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.leaflet-container.map-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100%;
+  background: #050A0F;
+  z-index: 0;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  margin-top: 5rem !important;
+  margin-right: 0.5rem !important;
+}
+.leaflet-control-zoom a {
+  background: #0B1219 !important;
+  color: #00FFB2 !important;
+  border: 1px solid rgba(0, 255, 178, 0.2) !important;
+}
+
+.user-marker-sonar {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.user-marker-sonar .core {
+  width: 14px; height: 14px;
+  background: #00FFB2;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 0 12px rgba(0,255,178,0.9);
+}
+.user-marker-sonar .ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(0,255,178,0.5);
+  border-radius: 50%;
+  animation: sonar 2s ease-out infinite;
+}
+.user-marker-sonar .ring:nth-child(2) { animation-delay: 0.6s; }
+.user-marker-sonar .ring:nth-child(3) { animation-delay: 1.2s; }
